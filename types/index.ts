@@ -37,7 +37,6 @@ export interface SupabaseProviderProps {
     children : React.ReactNode;
 };
 
-
 export interface UserDetails {
     id : string;
     first_name : string;
@@ -182,7 +181,6 @@ export interface PlayerStoreProps{
 export interface PlayerContentProps {
     song: Song;
     songUrl : string;
-    duration : number;
 }
 
 export interface SliderProps {
