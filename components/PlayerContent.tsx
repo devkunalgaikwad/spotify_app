@@ -26,13 +26,13 @@ const PlayerContent = ({song, songUrl}:PlayerContentProps) => {
         }
         player.setId(nextSong)
     }
-    const [audioDuration, setAudioDuration] = useState<number>(0);
+    // const [audioDuration, setAudioDuration] = useState<number>(0);
 
-    // const handleLoadMetadata = (event: React.SyntheticEvent<HTMLAudioElement> | Event) => {
-    //     const audio = event.target;
-    //     setAudioDuration(audio.duration);
-    // };
-    console.log(audioDuration)
+    // // const handleLoadMetadata = (event: React.SyntheticEvent<HTMLAudioElement> | Event) => {
+    // //     const audio = event.target;
+    // //     setAudioDuration(audio.duration);
+    // // };
+    // console.log(audioDuration)
 
     const onPlayPrevious = ()=>{
         if(player.ids.length ===0){
@@ -122,13 +122,13 @@ const PlayerContent = ({song, songUrl}:PlayerContentProps) => {
                 </div>
                 <AiFillStepForward onClick={onPlayNext} className='text-neutral-400 cursor-pointer hover:text-white transition' size={30}/>
             </div> 
-            <div className='flex flex-1 items-center justify-center'>
-            {/* <ReactAudioPlayer
+            {/* <div className='flex flex-1 items-center justify-center'>
+            <ReactAudioPlayer
     src={songUrl}
     onLoadedMetadata={handleLoadMetadata}
-/> */}
-                {/* <Seekbar value={currentPosition} max={song.duration} onChange={handleSeekChange} /> */}
-            </div>
+/>
+                <Seekbar value={currentPosition} max={song.duration} onChange={handleSeekChange} />
+            </div> */}
         </div>
         <div className='hidden md:flex w-full justify-end pr-2'>
             <div className='flex items-center gap-x-2 w-[120px]'>
