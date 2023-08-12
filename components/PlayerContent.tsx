@@ -2,7 +2,7 @@
 import { PlayerContentProps } from '@/types'
 import React,{useEffect, useState} from 'react'
 import {BsPauseFill, BsPlayFill} from 'react-icons/bs'
-import { LikeButton, PlayListItem, Seekbar, Slider } from './index'
+import { LikeButton, PlayListItem, Slider } from './index'
 import {HiSpeakerWave, HiSpeakerXMark} from 'react-icons/hi2'
 import ReactAudioPlayer from 'react-audio-player';
 import { AiFillStepBackward, AiFillStepForward } from 'react-icons/ai'
