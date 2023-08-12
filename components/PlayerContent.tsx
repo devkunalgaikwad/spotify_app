@@ -28,10 +28,10 @@ const PlayerContent = ({song, songUrl}:PlayerContentProps) => {
     }
     const [audioDuration, setAudioDuration] = useState<number>(0);
 
-    const handleLoadMetadata = (event: React.SyntheticEvent<HTMLAudioElement> | Event) => {
-        const audio = event.target;
-        setAudioDuration(audio.duration);
-    };
+    // const handleLoadMetadata = (event: React.SyntheticEvent<HTMLAudioElement> | Event) => {
+    //     const audio = event.target;
+    //     setAudioDuration(audio.duration);
+    // };
     console.log(audioDuration)
 
     const onPlayPrevious = ()=>{
