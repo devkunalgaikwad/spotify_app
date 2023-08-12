@@ -16,6 +16,5 @@ import LikeButton from '../support_components/LikeButton'
 import Player from '../Player'
 import PlayerContent from '../PlayerContent'
 import Slider from '../support_components/Slider'
-import Seekbar from '../support_components/Seekbar'
 
-export {Sidebar, SideBarItem, Library, Header, ListItem, Modal, AuthModal, UploadModal, Input, SongItem, PlayButton, PlayListItem, SearchInput, SearchContent, LikeButton, Player, PlayerContent, Slider, Seekbar}
+export {Sidebar, SideBarItem, Library, Header, ListItem, Modal, AuthModal, UploadModal, Input, SongItem, PlayButton, PlayListItem, SearchInput, SearchContent, LikeButton, Player, PlayerContent, Slider}
