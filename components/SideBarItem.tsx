@@ -12,6 +12,6 @@ const SideBarItem = ({icon:Icon,label,active,href}:SideBarItemProps) => {
         </p>
     </Link>
   )
-}
+} 
 
 export default SideBarItem

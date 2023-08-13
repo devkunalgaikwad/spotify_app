@@ -32,7 +32,7 @@ const Header = ({children,className}:HeaderProps) => {
         } else{
             toast.success('Logged out!')
         }
-    }
+    } 
   return (
     <div className={twMerge('h-fit bg-gradient-to-b from-emerald-800 p-6',className)}>
         <div className='w-full mb-4 flex items-center justify-between'>
@@ -45,10 +45,10 @@ const Header = ({children,className}:HeaderProps) => {
                 </button>
             </div>
             <div className='flex md:hidden gap-x-2 items-center'> 
-                <button type='button' title ='Home' className='rounded-full p-2 bg-white items-center justify-center hover:opacity-75'>
+                <button onClick={()=> router.push('/')}  className='rounded-full p-2 bg-white items-center justify-center hover:opacity-75'>
                     <HiHome className ={'text-black'} size={20}/>
                 </button>
-                <button type='button' title='search' className='rounded-full p-2 bg-white items-center justify-center hover:opacity-75'>
+                <button onClick={()=> router.push('/search')} className='rounded-full p-2 bg-white items-center justify-center hover:opacity-75'>
                     <BiSearch className ={'text-black'} size={20}/>
                 </button>
             </div>

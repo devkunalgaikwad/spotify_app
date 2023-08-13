@@ -16,7 +16,7 @@ const SideBar = ({children,songs}:sideBarProps) => {
     const pathname = usePathname()
     const player = usePlayer()
     const routes = useMemo(()=>[
-        {
+        { 
             icon : HiHome,
             label : 'Home',
             active : pathname !== '/search',
