@@ -10,8 +10,6 @@ export interface boxProps{
 export interface sideBarProps{
     children :React.ReactNode;
     songs : Song[];
-    className ?: string;
-    href : string;
 }
 
 export interface SideBarItemProps {
