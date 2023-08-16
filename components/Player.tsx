@@ -4,6 +4,7 @@ import useGetSongById from "@/hooks/useGetSongsById";
 import useLoadSongUrl from "@/hooks/useLoadSongUrl";
 import usePlayer from "@/hooks/usePlayer";
 import PlayerContent from "./PlayerContent";
+import FooterNav from "./FooterNav";
 
 const Player = () => {
     const player = usePlayer()
@@ -13,7 +14,7 @@ const Player = () => {
         return null
     }
     return ( 
-        <div className="fixed bottom-0 bg-black w-full py-2 h-[80px] px-4">
+        <div className="fixed bottom-[63px] bg-black w-full pb-2 h-[auto] px-4">
             <PlayerContent song={song} key={songUrl} songUrl={songUrl}/>
         </div>
      );

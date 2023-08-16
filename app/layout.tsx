@@ -8,8 +8,8 @@ import UserProvider from '@/providers/UserProvider'
 import ModalProvider from '@/providers/ModalProvider'
 import ToasterProvider from '@/providers/ToasterProvider'
 import getSongsById from '@/actions/getSongsById'
-import exp from 'constants'
 import getActiveProductWithPrices from '@/actions/getActiveProductWithPrices'
+import FooterNav from '@/components/FooterNav'
 
 const font = Figtree({ subsets: ['latin'] })
 
@@ -38,6 +38,7 @@ export default async function RootLayout({
               {children}
             </Sidebar>
             <Player/>
+            <FooterNav/>
           </UserProvider>
         </SupabaseProvider>
       </body>

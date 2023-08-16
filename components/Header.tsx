@@ -44,21 +44,16 @@ const Header = ({children,className}:HeaderProps) => {
                     <RxCaretRight size={35} className={'text-white'}/>
                 </button>
             </div>
-            <div className='flex md:hidden gap-x-2 items-center'> 
-                <button onClick={()=> router.push('/')}  className='rounded-full p-2 bg-white items-center justify-center hover:opacity-75'>
-                    <HiHome className ={'text-black'} size={20}/>
-                </button>
-                <button onClick={()=> router.push('/search')} className='rounded-full p-2 bg-white items-center justify-center hover:opacity-75'>
-                    <BiSearch className ={'text-black'} size={20}/>
-                </button>
-            </div>
+            <h1 className=' flex md:hidden  text-white font-bold text-[28px]'>
+                Spotify
+            </h1>
             <div className='flex justify-between items-center gap-x-4'>
                {user ? (
                 <div className='flex gap-x-4 items-center'>
                     <Button onClick={handleLogout} className='font-bold px-7 py-2 bg-neutral-100' >
                         Logout 
                     </Button>
-                    <Button onClick={()=>router.push('/account')}>
+                    <Button className='hidden md:flex' onClick={()=>router.push('/account')}>
                         <FaUserAlt/>
                     </Button>
                 </div>

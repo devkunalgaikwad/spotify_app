@@ -7,7 +7,7 @@ import { useUser } from '@/hooks/useUser'
 import useUploadModal from '@/hooks/useUploadModal'
 import { LibrayProps } from '@/types'
 import { PlayListItem } from './index'
-import useOnPlay from '@/hooks/useOnPlay'
+import useOnPlay from '@/hooks/useOnPlay' 
 import useSubscribeModal from '@/hooks/useSubscribeModal'
 
 const Library = ({songs}:LibrayProps) => {
@@ -20,7 +20,7 @@ const Library = ({songs}:LibrayProps) => {
             return authModal.onOpen()
         }
         if (!subscription){
-            return subscribeModal.onOpen()
+            return subscribeModal.onOpen() 
         }
         return uploadModal.onOpen()
     };

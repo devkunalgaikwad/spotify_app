@@ -1,6 +1,3 @@
-'use client'
-
-import supabase from "@/config/supabaseClient";
 import { Song } from "@/types";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 

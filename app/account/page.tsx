@@ -1,6 +1,7 @@
 import Header from '@/components/Header'
 import React from 'react'
 import AccountContent from './component/AccountContent'
+import Image from 'next/image'
 
 const page = () => {
   return (
@@ -10,7 +11,7 @@ const page = () => {
                 <h1 className='text-white text-3xl font-semibold'>Account Setting</h1>
             </div>
         </Header>
-        <AccountContent/>
+          <AccountContent/>
     </div>
   )
 }

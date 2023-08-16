@@ -6,7 +6,8 @@ import PageContent from "./PageContent";
 export const revalidate = 0;
 
 export default async function Home() {
-  const songs = await getSongs()
+  const mobile =true;
+  const songs = await getSongs() 
   return (
     <div
       className="
@@ -14,7 +15,7 @@ export default async function Home() {
         rounded-lg 
         h-full 
         w-full 
-        overflow-hidden 
+        overflow-hidden  
         overflow-y-auto
       "
     >
@@ -53,6 +54,10 @@ export default async function Home() {
           </h1>
         </div>
         <PageContent songs={songs}/>
+        <div className="md:hidden">
+        </div>
+      </div>
+      <div className="sm:hidden fixed bottom-0 w-full h-[33px]">
       </div>
     </div>
   )

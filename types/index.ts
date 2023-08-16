@@ -11,12 +11,16 @@ export interface sideBarProps{
     children :React.ReactNode;
     songs : Song[];
 }
+export interface footerNavProps {
+    songs : Song[];
+}
 
 export interface SideBarItemProps {
     icon : IconType;
     label : string;
     active ?: boolean;
     href : string;
+    data ?: Song[]
 }
 
 export interface HeaderProps {
@@ -143,7 +147,7 @@ export interface PageContentProps {
 }
 
 export interface LibrayProps{
-    songs : Song[]
+    songs : Song[];
 }
 
 export interface PlayListItemProps {

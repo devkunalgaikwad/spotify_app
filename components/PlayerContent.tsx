@@ -26,14 +26,6 @@ const PlayerContent = ({song, songUrl}:PlayerContentProps) => {
         }
         player.setId(nextSong)
     }
-    // const [audioDuration, setAudioDuration] = useState<number>(0);
-
-    // // const handleLoadMetadata = (event: React.SyntheticEvent<HTMLAudioElement> | Event) => {
-    // //     const audio = event.target;
-    // //     setAudioDuration(audio.duration);
-    // // };
-    // console.log(audioDuration)
-
     const onPlayPrevious = ()=>{
         if(player.ids.length ===0){
             return
@@ -45,7 +37,7 @@ const PlayerContent = ({song, songUrl}:PlayerContentProps) => {
         }
         player.setId(previousSong)
     }
-    const [play, { pause, sound }] = useSound(
+    const [play, { pause, duration, sound }] = useSound(
         songUrl,
         { 
           volume: volume,
@@ -81,36 +73,52 @@ const PlayerContent = ({song, songUrl}:PlayerContentProps) => {
             setVolume(0)
         }
     }
-    // const [currentPosition, setCurrentPosition] = useState<number>(0);
-
-    // Update the current position state as the audio progresses
-    // useEffect(() => {
-    //     if (sound) {
-    //         sound.setPosition((position) => {
-    //             setCurrentPosition(position / 1000); // Position is in milliseconds, converting to seconds
-    //         });
-    //     }
-    // }, [sound]);
-
-    // // Function to handle Seekbar changes
-    // const handleSeekChange = (newValue) => {
-    //     if (sound) {
-    //         const newPosition = newValue * 1000; // Convert seconds to milliseconds
-    //         sound.stop(); // Stop the current playback
-    //         sound.play({ position: newPosition }); // Start playback from the new position
-    //         setCurrentPosition(newPosition / 1000); // Update the current position in seconds
-    //     }
-    // };
+    const [currTime, setCurrTime]= useState({
+        min:0 ,
+        sec:0 ,
+    })
+    const [seconds, setSeconds] = useState(0)
+    const [time, setTime] = useState({
+        min : 0,
+        sec : 0,
+    })
+    useEffect(()=>{
+        const sec = duration /1000;
+        const min = Math.floor(sec/60)
+        const secRemain = Math.floor(sec %60)
+        const time ={
+            min : min,
+            sec : secRemain
+        }
+        setTime(time)
+    },[duration])
+    useEffect(()=>{
+        const interval = setInterval(()=>{
+            if (sound){
+                setSeconds(sound.seek([]))
+                const min = Math.floor(sound.seek([])/60)
+                const sec = Math.floor(sound.seek([])%60)
+                setCurrTime({
+                    min,
+                    sec,
+                })
+            }
+        },1000)
+        return()=>clearInterval(interval)
+    },[sound])
   return (
-    <div className='grid grid-cols-2 md:grid-cols-3 h-auto'>
+    <div className='grid grid-cols-2 md:grid-cols-3 h-auto items-center'>
         <div className='flex w-full justify-start'>
             <div className='flex items-center gap-x-4'>
-                <PlayListItem data={song }/>
-                <LikeButton songId={song.id}/>
+                <PlayListItem data={song}/>
+                <div className='hidden md:flex'>
+                    <LikeButton songId={song.id}/>
+                </div>
             </div>
         </div>
         <div className='flex md:hidden col-auto w-full justify-end items-center'>
-            <div className='h-10 w-10 flex items-center justify-center rounded-full bg-white p-1 cursor-pointer' onClick={handlePlay}>
+            <LikeButton songId={song.id}/>
+            <div className='h-10 ml-2 w-10 flex items-center justify-center rounded-full bg-white p-1 cursor-pointer' onClick={handlePlay}>
                 <Icon size={30} className='text-black'/>
             </div>
         </div>
@@ -122,21 +130,25 @@ const PlayerContent = ({song, songUrl}:PlayerContentProps) => {
                 </div>
                 <AiFillStepForward onClick={onPlayNext} className='text-neutral-400 cursor-pointer hover:text-white transition' size={30}/>
             </div> 
-            {/* <div className='flex flex-1 items-center justify-center'>
-            <ReactAudioPlayer
-    src={songUrl}
-    onLoadedMetadata={handleLoadMetadata}
-/>
-                <Seekbar value={currentPosition} max={song.duration} onChange={handleSeekChange} />
-            </div> */}
+            <div className='flex flex-1 justify-center items-center gap-3 text-xs'>
+                <p>
+                    {currTime.min}:{currTime.sec}
+                </p>
+                <input className='cursor-pointer h-[5px] w-[20rem] bg-[#707070] rounded-md sliderthumb' type="range" min={'0'} max={duration/1000} value={seconds} onChange={(e)=>sound.seek([e.target.value])}/>
+                <p>{time.min}:{time.sec}</p>
+            </div>
         </div>
         <div className='hidden md:flex w-full justify-end pr-2'>
             <div className='flex items-center gap-x-2 w-[120px]'>
                 <VolumeIcon size={35} onClick={toggleMute} className='cursor-pointer'/>
-                <Slider value={volume} onChange={(value)=> setVolume(value)}/>
+                <Slider 
+              value={volume} 
+              onChange={(value) => setVolume(value)}
+            />
             </div>
         </div>
     </div>
+
   )
 }
 
