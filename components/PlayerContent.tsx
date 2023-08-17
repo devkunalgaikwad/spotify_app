@@ -4,7 +4,6 @@ import React,{useEffect, useState} from 'react'
 import {BsPauseFill, BsPlayFill} from 'react-icons/bs'
 import { LikeButton, PlayListItem, Slider } from './index'
 import {HiSpeakerWave, HiSpeakerXMark} from 'react-icons/hi2'
-import ReactAudioPlayer from 'react-audio-player';
 import { AiFillStepBackward, AiFillStepForward } from 'react-icons/ai'
 import usePlayer from '@/hooks/usePlayer'
 import useSound from 'use-sound'
@@ -13,6 +12,7 @@ const PlayerContent = ({song, songUrl}:PlayerContentProps) => {
     const player = usePlayer()
     const [volume, setVolume] = useState(0.5)
     const [isPlaying, setIsPlaying] = useState(false)
+    const [conduration, setConduration] = useState<number>()
     const Icon = isPlaying ? BsPauseFill : BsPlayFill 
     const VolumeIcon = volume ===0 ? HiSpeakerXMark : HiSpeakerWave
     const onPlayNext = ()=>{
@@ -47,10 +47,9 @@ const PlayerContent = ({song, songUrl}:PlayerContentProps) => {
             onPlayNext();
           },
           onpause: () => setIsPlaying(false),
-          format: ['mp3']
+          format: ['mp3'],
         }
-      );
-    
+      );    
       useEffect(() => {
         sound?.play();
         
@@ -74,8 +73,8 @@ const PlayerContent = ({song, songUrl}:PlayerContentProps) => {
         }
     }
     const [currTime, setCurrTime]= useState({
-        min:0 ,
-        sec:0 ,
+        min: 0,
+        sec: 0,
     })
     const [seconds, setSeconds] = useState(0)
     const [time, setTime] = useState({
@@ -83,14 +82,17 @@ const PlayerContent = ({song, songUrl}:PlayerContentProps) => {
         sec : 0,
     })
     useEffect(()=>{
-        const sec = duration /1000;
-        const min = Math.floor(sec/60)
-        const secRemain = Math.floor(sec %60)
-        const time ={
-            min : min,
-            sec : secRemain
-        }
-        setTime(time)
+        if (duration !== null) {
+            const sec = duration / 1000;
+            const min = Math.floor(sec / 60);
+            const secRemain = Math.floor(sec % 60);
+            const time = {
+              min: min,
+              sec: secRemain
+            };
+            setTime(time);
+          }
+        
     },[duration])
     useEffect(()=>{
         const interval = setInterval(()=>{
@@ -134,7 +136,7 @@ const PlayerContent = ({song, songUrl}:PlayerContentProps) => {
                 <p>
                     {currTime.min}:{currTime.sec}
                 </p>
-                <input className='cursor-pointer h-[5px] w-[20rem] bg-[#707070] rounded-md sliderthumb' type="range" min={'0'} max={duration/1000} value={seconds} onChange={(e)=>sound.seek([e.target.value])}/>
+                <input title='duration' className='cursor-pointer h-[5px] w-[20rem] bg-[#707070] rounded-md sliderthumb' type="range" min={'0'} max={duration !== null ? duration / 1000 : 0} value={seconds} onChange={(e)=>sound.seek([e.target.value])}/>
                 <p>{time.min}:{time.sec}</p>
             </div>
         </div>
