@@ -5,7 +5,7 @@ import { Song } from "@/types";
 import { toast } from "react-hot-toast";
 
 const getLikedSongs = async (): Promise<Song[]> => {
-  const supabase = createServerComponentClient({cookies})
+  const supabase = createServerComponentClient({cookies:cookies})
   const {data:{session}}= await supabase.auth.getSession()
 
   const { data, error } = await supabase

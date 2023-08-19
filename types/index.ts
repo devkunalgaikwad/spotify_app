@@ -167,6 +167,7 @@ export interface SearchContentProps {
 
 export interface LikeButtonProps {
     songId : string;
+    drawer ?:boolean;
 }
 
 export interface LikedContentProps {

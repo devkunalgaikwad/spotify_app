@@ -30,7 +30,7 @@ const SideBar = ({children,songs}:sideBarProps) => {
         },
     ], [pathname]);
 return (
-    <div className={twMerge('flex h-full', player.activeId && 'h-[calc(100%-88px)]')}>
+    <div className={twMerge('flex h-full', player.activeId && 'h-[calc(100%-68px)]')}>
         <div className='hidden md:flex flex-col gap-y-2 bg-black h-full w-[300px] p-2'>
             <Box>
                 <div className='flex flex-col gap-y-4 px-7 py-4 '>
@@ -43,7 +43,7 @@ return (
                 <Library songs={songs}/>
             </Box>
         </div>
-        <main className='h-full flex-1 overflow-y-auto py-2'>
+        <main className='h-full flex-1 overflow-y-auto md:py-2  py-0'>
             {children}
         </main>
     </div>

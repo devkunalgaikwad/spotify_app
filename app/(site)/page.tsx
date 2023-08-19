@@ -6,13 +6,13 @@ import PageContent from "./PageContent";
 export const revalidate = 0;
 
 export default async function Home() {
-  const mobile =true;
   const songs = await getSongs() 
   return (
     <div
       className="
         bg-neutral-900 
-        rounded-lg 
+        md:rounded-lg
+        rounded-none
         h-full 
         w-full 
         overflow-hidden  

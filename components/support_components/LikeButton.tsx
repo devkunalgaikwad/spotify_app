@@ -8,7 +8,7 @@ import React,{useState, useEffect} from 'react'
 import { toast } from 'react-hot-toast'
 import {AiFillHeart, AiOutlineHeart} from 'react-icons/ai'
 
-const LikeButton = ({songId}:LikeButtonProps) => {
+const LikeButton = ({songId,drawer}:LikeButtonProps) => {
     const router = useRouter()
     const {supabaseClient} = useSessionContext()
     const authModal = useAuthModal()
@@ -53,7 +53,7 @@ const LikeButton = ({songId}:LikeButtonProps) => {
 
   return (
     <button type='button' title='like' className='hover:opacity-75 cursor-pointer transition' onClick={handleClick}>
-        <Icon color={isLiked ? '#22c55e':'white'} size={25}/>
+        <Icon color={isLiked ? '#22c55e':'white'} size={drawer?40:30}/>
     </button>
   )
 }
