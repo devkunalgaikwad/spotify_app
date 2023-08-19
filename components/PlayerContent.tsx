@@ -149,7 +149,7 @@ const PlayerContent = ({song, songUrl}:PlayerContentProps) => {
 
 
         <Drawer anchor='bottom' open={isDrawerOpen} onClose={()=>setIsDrawerOpen(false)}>
-            <Box width={'full'} p={2} height={'100vh'} textAlign={'center'} className={'bg-gradient-to-b from-red-800 bg-black'}>
+            <Box width={'full'} p={2} height={'100vh'} textAlign={'center'} className={'bg-gradient-to-b from-red-800 bg-black overflow-y-auto'}>
                 <div className='flex flex-row justify-between w-full overflow-auto overflow-y-auto items-center'>
                     <div className='flex start-0' onClick={()=> setIsDrawerOpen(false)}>
                         <IoIosArrowDown size={28}/>
@@ -164,14 +164,14 @@ const PlayerContent = ({song, songUrl}:PlayerContentProps) => {
                         <IoMdMusicalNote size={28}/>
                     </div>
                 </div>
-                <div className='w-full flex justify-center relative rounded-md pt-[4.5rem]'>
+                <div className='w-full max-w-[370px] max-h-[370px] flex justify-center overflow-hidden relative rounded-md pt-[4.5rem]'>
                     <Image src={drawerSongImage|| '/image/liked.png'} className={' object-cover rounded-lg'}alt={`${song.title}`} width={275} height={275}/>
                 </div>
                 <div className='px-[25px] mt-[4rem]'>
                     <div className='flex flex-row items-center justify-between w-full py-[31px]'>
                         <div className='flex flex-col text-white text-left'>
                             <h1 className='font-semibold text-xl capitalize'>{song.title}</h1>
-                            <p className='text-ld text-neutral-600'>{song.author}</p>
+                            <p className='text-ld text-neutral-400'>{song.author}</p>
                         </div>
                         <div>
                             <LikeButton drawer={true} songId={song.id}/>

@@ -24,18 +24,17 @@ const FooterNav = () => {
             href : '/search',
         },
         {
-            icon : MdAccountCircle,
-            label : 'Account',
-            active : pathname === '/account',
-            href : '/account',
-        },
-        {
             icon : VscLibrary,
             label : 'Library',
             active : pathname === '/library',
             href : '/library',
+        },
+        {
+            icon : MdAccountCircle,
+            label : 'Account',
+            active : pathname === '/account',
+            href : '/account',
         }
-
     ], [pathname]);
   return ( 
     <Box className='fixed bottom-0 md:hidden'>
